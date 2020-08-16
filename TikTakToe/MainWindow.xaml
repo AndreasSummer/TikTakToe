@@ -30,21 +30,24 @@
             Margin="3"
             Command="{Binding clickCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding R1C1}" />
+            Content="{Binding R1C1}"
+            FontSize="36" />
         <Button
             Grid.Row="2"
             Grid.Column="0"
             Margin="3"
             Command="{Binding clickCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding R2C1}" />
+            Content="{Binding R2C1}"
+            FontSize="36" />
         <Button
             Grid.Row="3"
             Grid.Column="0"
             Margin="3"
             Command="{Binding clickCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding R3C1}" />
+            Content="{Binding R3C1}"
+            FontSize="36" />
 
 
         <Button
@@ -53,21 +56,24 @@
             Margin="3"
             Command="{Binding clickCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding R1C2}" />
+            Content="{Binding R1C2}"
+            FontSize="36" />
         <Button
             Grid.Row="2"
             Grid.Column="1"
             Margin="3"
             Command="{Binding clickCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding R2C2}" />
+            Content="{Binding R2C2}"
+            FontSize="36" />
         <Button
             Grid.Row="3"
             Grid.Column="1"
             Margin="3"
             Command="{Binding clickCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding R3C2}" />
+            Content="{Binding R3C2}"
+            FontSize="36" />
 
 
         <Button
@@ -76,21 +82,24 @@
             Margin="3"
             Command="{Binding clickCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding R1C3}" />
+            Content="{Binding R1C3}"
+            FontSize="36" />
         <Button
             Grid.Row="2"
             Grid.Column="2"
             Margin="3"
             Command="{Binding clickCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding R2C3}" />
+            Content="{Binding R2C3}"
+            FontSize="36" />
         <Button
             Grid.Row="3"
             Grid.Column="2"
             Margin="3"
             Command="{Binding clickCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-            Content="{Binding R3C3}" />
+            Content="{Binding R3C3}"
+            FontSize="36" />
         <TextBox
             Grid.Column="2"
             Width="120"
@@ -98,7 +107,14 @@
             VerticalAlignment="Center"
             Text="{Binding Game.CurrentPlayer.PlayerName}"
             TextWrapping="Wrap" />
-        <Button Content="New Game" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="42" Width="81" Command="{Binding NewGameCommand}"/>
+        <Button
+            Width="81"
+            Height="42"
+            Margin="10,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Command="{Binding NewGameCommand}"
+            Content="New Game" />
 
     </Grid>
 </Window>
