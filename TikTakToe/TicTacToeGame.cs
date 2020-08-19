@@ -28,7 +28,7 @@ namespace TikTakToe
         {
             firstPlayer = true;
             GenGame();
-            
+
         }
 
         public void NextRound()
@@ -54,7 +54,8 @@ namespace TikTakToe
         }
 
         private void GenGame()
-        { 
+        {
+            
             GameField = new TicTacToeField[3, 3];
 
             for (int x = 0; x <= 2; x++)
@@ -65,13 +66,21 @@ namespace TikTakToe
                 }
             }
 
-            PlayerOne = new TikTakToe.TicTacToePlayer(this, "Player 1 - x", "x");
-            PlayerTwo = new TikTakToe.TicTacToePlayer(this, "Player 2 - o", "o");
+            if(PlayerOne==null)
+                PlayerOne = new TikTakToe.TicTacToePlayer(this, "Player 1 - x", "x");
+
+            if(PlayerTwo==null)
+                PlayerTwo = new TikTakToe.TicTacToePlayer(this, "Player 2 - o", "o");
+
+            PlayerOne.NewTry();
+            PlayerTwo.NewTry();
             AllPlayers.Clear();
             AllPlayers.Add(PlayerOne);
             AllPlayers.Add(PlayerTwo);
         }
     }
+
+
 
     public class TicTacToeField : ViewModel
     {
@@ -102,6 +111,17 @@ namespace TikTakToe
         private string _playerName;
         private TicTacToeGame ticTacToeGame;
 
+        public int AnzahlGewonnen
+        {
+            get { return anzahlGewonnen; }
+            set { anzahlGewonnen = value; OnPropertyChanged(); }
+        }
+
+        public void NewTry()
+        {
+            this.IsGewinner = false;
+        }
+
         public TicTacToePlayer(TicTacToeGame ticTacToeGame, string playername, string playerSymbol)
         {
             this.ticTacToeGame = ticTacToeGame;
@@ -118,6 +138,15 @@ namespace TikTakToe
                     ticTacToeGame.GameField[0, 0],
                     ticTacToeGame.GameField[0, 1],
                     ticTacToeGame.GameField[0, 2],
+                },
+                new System.Collections.Generic.List<TicTacToeField>()
+                {
+                    //x##
+                    //x##
+                    //x##
+                    ticTacToeGame.GameField[0, 0],
+                    ticTacToeGame.GameField[1, 0],
+                    ticTacToeGame.GameField[2, 0],
                 },
                 new System.Collections.Generic.List<TicTacToeField>()
                 {
@@ -183,9 +212,16 @@ namespace TikTakToe
             }
         }
 
-        public string PlayerSymbol { get; internal set; }
+        public string PlayerSymbol
+        {
+            get { return playerSymbol; }
+            set { playerSymbol = value; OnPropertyChanged(); }
+        }
 
         System.Collections.Generic.List<System.Collections.Generic.List<TicTacToeField>> _fieldWinningSetting;
+        private string playerSymbol;
+        private int anzahlGewonnen;
+        internal bool IsGewinner = false;
 
         internal bool CheckIsWinner()
         {
@@ -198,7 +234,15 @@ namespace TikTakToe
                     ok = ok && (item.FieldSetWithUser == this);
                 }
                 if (ok)
+                {
+                    if (!IsGewinner)
+                    {
+                        this.IsGewinner = true;
+                        AnzahlGewonnen++;
+                    }
+
                     return ok;
+                }
             }
             return false;
         }

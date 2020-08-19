@@ -57,9 +57,15 @@ namespace TikTakToe
         public MainWindowsViewModel()
         {
 
-            clickCommand = new RelayCommand(t => ClickOnButton((Button)t));
+            clickCommand = new RelayCommand(t => ClickOnButton((Button)t),can => CheckCanPlay(can));
             NewGameCommand = new RelayCommand(t => { Game.ResetGame(); InvalidateContent(); });
             Game = new TicTacToeGame();
+        }
+
+        private bool CheckCanPlay(object can)
+        {
+            var ret=  !(Game.PlayerOne.CheckIsWinner() && !Game.PlayerOne.CheckIsWinner());
+            return ret;
         }
 
         private void ClickOnButton(Button t)
@@ -78,6 +84,8 @@ namespace TikTakToe
             fieldToSet.FieldSetWithUser = Game.CurrentPlayer;
             if (Game.CurrentPlayer.CheckIsWinner())
             {
+
+
                 MessageBox.Show("Gewonnen hat " + Game.CurrentPlayer.PlayerName);
             }
             Game.NextRound();

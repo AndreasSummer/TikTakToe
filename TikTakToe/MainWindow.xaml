@@ -102,11 +102,11 @@
             FontSize="36" />
         <TextBox
             Grid.Column="2"
-            Width="120"
-            HorizontalAlignment="Center"
+            Width="85"
+            HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Text="{Binding Game.CurrentPlayer.PlayerName}"
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap" Margin="59,0,0,0" />
         <Button
             Width="81"
             Height="42"
@@ -115,6 +115,12 @@
             VerticalAlignment="Center"
             Command="{Binding NewGameCommand}"
             Content="New Game" />
+        <TextBox HorizontalAlignment="Left" Margin="152,11,0,0" Text="{Binding Game.PlayerOne.PlayerName}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Margin="152,34,0,0" Text="{Binding Game.PlayerTwo.PlayerName}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Margin="125,34,0,0" Text="{Binding Game.PlayerTwo.PlayerSymbol}" TextWrapping="Wrap" VerticalAlignment="Top" Width="22" Height="18"/>
+        <TextBox HorizontalAlignment="Left" Margin="125,11,0,0" Text="{Binding Game.PlayerOne.PlayerSymbol}" TextWrapping="Wrap" VerticalAlignment="Top" Width="22" Height="18"/>
+        <Label Content="{Binding Game.PlayerOne.AnzahlGewonnen}" Grid.Column="1" HorizontalAlignment="Left" Margin="115,7,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Game.PlayerTwo.AnzahlGewonnen}" Grid.Column="1" HorizontalAlignment="Left" Margin="115,28,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
